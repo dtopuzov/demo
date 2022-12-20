@@ -21,4 +21,6 @@ jobs:
         distribution: 'temurin'
 
     - name: Run Tests
-      run: ./gradlew clean test
+      run: |
+        chmod +x ./gradlew
+        ./gradlew clean test
