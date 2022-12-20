@@ -22,5 +22,16 @@ jobs:
 
     - name: Run Tests
       run: |
+        export GITHUB_USER=dtopuzov
+        export GITHUB_REPO=test
+        export GITHUB_TOKEN=${{ secrets.TOKEN }}
         chmod +x ./gradlew
         ./gradlew clean test
+
+    - name: Test Report
+      uses: phoenix-actions/test-reporting@v8
+      id: test-report               
+      if: success() || failure()  
+      with:
+        name: Tests Results        
+        path: build/test-results/test/*.xml
