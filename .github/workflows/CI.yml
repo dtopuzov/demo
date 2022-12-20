@@ -22,5 +22,8 @@ jobs:
 
     - name: Run Tests
       run: |
+        export GITHUB_USER=dtopuzov
+        export GITHUB_REPO=test
+        export GITHUB_TOKEN=${{ secrets.TOKEN }}
         chmod +x ./gradlew
         ./gradlew clean test
